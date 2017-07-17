@@ -16,18 +16,17 @@ func main() {
 	}
 	m := getMatrix(int(size), int(size))
 
-	x, y := 0, 0
-	dx, dy := 1, 0
+	c, r, dc, dr := 0, 0, 1, 0
 
 	for count := 1; count <= int(size*size); count++ {
-		m[y][x] = count
-		if (x+dx >= int(size)) || (x+dx < 0) || (y+dy >= int(size)) || (y+dy < 0) || (m[y+dy][x+dx] != 0) {
-			tmp := dy
-			dy = dx
-			dx = -tmp
+		m[r][c] = count
+		if (c+dc >= int(size)) || (c+dc < 0) || (r+dr >= int(size)) || (r+dr < 0) || (m[r+dr][c+dc] != 0) {
+			tmp := dr
+			dr = dc
+			dc = -tmp
 		}
-		x = x + dx
-		y = y + dy
+		c = c + dc
+		r = r + dr
 	}
 	printMatrix(m)
 }
